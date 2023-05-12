@@ -52,7 +52,7 @@ export const Login = (data: RegisterData) => (dispatch: Dispatch<RegisterAction>
         })
         .catch((err) => {
 
-            dispatch({ type: POST_SIGN_IN_FAILURE, payload1: err.response.data.message });
+            dispatch({ type: POST_SIGN_IN_FAILURE, payload2: err.response.data.message });
         });
 };
 
