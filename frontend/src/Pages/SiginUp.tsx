@@ -36,7 +36,7 @@ const initialQuestions: QuestionType[] = [
     answer: null,
   },
   {
-    question: "Please describe your typical day",
+    question: "Please describe your typical day?",
     optionA: "Mostly at Home",
     optionB: "At the Office",
     answer: null,
@@ -72,18 +72,45 @@ const Quiz: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isSwitchOn, setisSwitchOn] = useState<boolean>(false);
   const [showForm, setShowForm] = useState<boolean>(false)
-  const [gender,setGender]=useState("")
+  const [gender, setGender] = useState<string>("")
+  const [primaryGoal, setPrimaryGoal] = useState<string>("")
+  const [typicalDay, setTypicalDay] = useState<string>("")
+  const [age, setAge] = useState<any>(0)
+  const [currentWeight, setCurrentWeight] = useState<any>(0)
+  const [PHeight, setPHeight] = useState<any>(0)
+  const [goalWeight, setGoalWeight] = useState<any>(0)
+
   const Icon: IconType = BsArrowLeft;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleOptionChange = (answer: string) => {
-    const updatedQuestions = [...questions];
-    updatedQuestions[currentQuestionIndex].answer = answer;
-    setQuestions(updatedQuestions);
+  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // const updatedQuestions = [...questions];
+    // updatedQuestions[currentQuestionIndex].answer = answer;
+    // setQuestions(updatedQuestions);
+    // console.log(event.target.name+"-"+event.target.value)
+    const { name, value } = event.target
+    if (name === "How old are you?") {
+      setAge(value)
+    } else if (name === "How tall are you?") {
+      setPHeight(value)
+    } else if (name === "What's your current weight?") {
+      setCurrentWeight(value)
+    } else if (name === "Got it! And what's your goal weight?") {
+      setGoalWeight(value)
+    }
   };
 
-  console.log(questions[currentQuestionIndex].answer)
+  console.log("primaryGoal" + "-" + primaryGoal)
+  console.log("typicalDay" + "-" + typicalDay)
+  console.log("gender" + "-" + gender)
+  console.log("goalWeight" + "-" + goalWeight)
+  console.log("PHeight" + "-" + PHeight)
+  console.log("currentWeight" + "-" + currentWeight)
+  console.log("age" + "-" + age)
+
+
+
   const handleChange = (val: number) => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + val);
   }
@@ -137,11 +164,30 @@ const Quiz: React.FC = () => {
             <div>
               {!isSwitchOn ? (
                 <div>
-                  <button className="bg-[#eff1f4] py-5 w-1/2 mt-10 rounded-lg" onClick={() => handleChange(1)}>
+                  <button className="bg-[#eff1f4] py-5 w-1/2 mt-10 rounded-lg" onClick={() => {
+                    handleChange(1);
+                    if (questions[currentQuestionIndex].question === "What is your primary goal?") {
+                      setPrimaryGoal(questions[currentQuestionIndex].optionA)
+                    } else if (questions[currentQuestionIndex].question === "What is your Gender?") {
+                      setGender(questions[currentQuestionIndex].optionA)
+                    } else if (questions[currentQuestionIndex].question === "Please describe your typical day?") {
+                      setTypicalDay(questions[currentQuestionIndex].optionA)
+                    }
+                  }}>
                     <p className="text-xl"> {questions[currentQuestionIndex].optionA}</p>
                   </button>
                   <br />
-                  <button className="bg-[#eff1f4] py-5 w-1/2 mt-10 rounded-lg" onClick={() => handleChange(1)}>
+                  <button className="bg-[#eff1f4] py-5 w-1/2 mt-10 rounded-lg" onClick={() => {
+                    handleChange(1);
+                    if (questions[currentQuestionIndex].question === "What is your primary goal?") {
+                      setPrimaryGoal(questions[currentQuestionIndex].optionB)
+                    } else if (questions[currentQuestionIndex].question === "What is your Gender?") {
+                      setGender(questions[currentQuestionIndex].optionB)
+                    } else if (questions[currentQuestionIndex].question === "Please describe your typical day?") {
+                      setTypicalDay(questions[currentQuestionIndex].optionB)
+                    }
+
+                  }}>
                     <p className="text-xl">{questions[currentQuestionIndex].optionB}</p>
                   </button>
                 </div>
@@ -154,12 +200,9 @@ const Quiz: React.FC = () => {
             {shouldRenderSwitch && (
               <div>
                 <div className="mt-10">
-                  <input type="text" className="border-2 border-b-black h-20 w-20 rounded-lg" />
+                  <input type="text" name={questions[currentQuestionIndex].question} className="border-2 border-b-black h-20 px-5 text-2xl font-bold w-20 rounded-lg" onChange={handleOptionChange} />
                   <label className="ml-10 text-right text-4xl">{questions[currentQuestionIndex].question === "How old are you?" ? "years" : questions[currentQuestionIndex].question === "How tall are you?" ? "ft" : questions[currentQuestionIndex].question === "What's your current weight?" ? "kg" : "kg"
-
                   }
-
-
                   </label>
                 </div>
                 {currentQuestionIndex < questions.length - 1 ? <button className=" py-3 w-1/2 mt-10 rounded-lg bg-[#f2305a] text-white" onClick={() => {
