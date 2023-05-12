@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import HomePageBanner from "../Assets/homePage_Banner.mp4"
 
 type Props = {};
-
 const Video = () => {
     const [width, setWidth] = useState("full");
 
@@ -12,7 +11,6 @@ const Video = () => {
             setWidth("1/2");
         }, 2000);
     }, []);
-
     return (
         <div
             className={`w-${width} h-full bg-fit  bg-no-repeat`}
