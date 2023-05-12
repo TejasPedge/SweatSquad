@@ -38,7 +38,8 @@ return (
                                 <p className='text-center rounded-md text-green-400 inline-block mx-auto px-2 bg-blue-700'>Eqipment : {el.equipment}</p>
                             </div>
                         </div>
-                    </div>
+                    </div>   
+                    
                 })}
             </div>
         </div>
