@@ -2,6 +2,8 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import SignIn from '../Pages/SignIn'
 import SiginUp from '../Pages/SiginUp'
+import WorkoutsRoutine from '../Pages/WorkoutsRoutine'
+import SinglePageTargetWorkouts from '../Pages/SinglePageTargetWorkouts'
 
 const AllRoutes = () => {
   return (
@@ -9,6 +11,8 @@ const AllRoutes = () => {
       <Routes>
         <Route path='/signin' element={<SignIn />}></Route>
         <Route path='/signup' element={<SiginUp />}></Route>
+        <Route path='/workout-routine' element={<WorkoutsRoutine />}></Route>
+        <Route path='/workout-routine/:target' element={<SinglePageTargetWorkouts />}></Route>
       </Routes>
     </div>
   )
