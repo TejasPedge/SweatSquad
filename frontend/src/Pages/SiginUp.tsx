@@ -2,7 +2,9 @@ import React from 'react'
 
 const SiginUp = () => {
   return (
-    <div>SiginUp</div>
+    <div>
+      <div> <img src="" alt="" /></div>
+    </div>
   )
 }
 
