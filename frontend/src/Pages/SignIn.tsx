@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HomeBanner from "../Assets/homeBanner.mp4";
+// import HomeBanner from "../Assets/homeBanner.mp4";
 import SIgnIn from "../Assets/signin.mp4";
 import fitnessB from "../Assets/fitnessB-transformed.png";
 import { Link } from 'react-router-dom';
