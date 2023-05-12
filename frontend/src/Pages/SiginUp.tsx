@@ -4,6 +4,8 @@ import { IconType } from "react-icons/lib/esm/iconBase";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Toast from "./Toast";
+import { Register } from "../Redux/Login/action";
+import { useDispatch } from "react-redux";
 // import { SignUpModal } from "./SignUpModal";
 
 type QuestionType = {
@@ -68,6 +70,18 @@ const initialQuestions: QuestionType[] = [
   },
 ];
 
+type dataType = {
+  email: string,
+  password: string,
+  gender: string,
+  primaryGoal: string,
+  PHeight: number,
+  age: number,
+  currentWeight: number,
+  goalWeight: number,
+  typicalDay: string,
+  name: string
+}
 const Quiz: React.FC = () => {
   const [questions, setQuestions] = useState<QuestionType[]>(initialQuestions);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -79,9 +93,10 @@ const Quiz: React.FC = () => {
   const [age, setAge] = useState<any>(0)
   const [currentWeight, setCurrentWeight] = useState<any>(0)
   const [PHeight, setPHeight] = useState<any>(0)
+  const [name, setName] = useState<string>("")
   const [goalWeight, setGoalWeight] = useState<any>(0)
   const [showToast, setShowToast] = useState(false);
-
+  const dispatch = useDispatch<any>()
   const Icon: IconType = BsArrowLeft;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -103,16 +118,23 @@ const Quiz: React.FC = () => {
     }
   };
 
-  // console.log("primaryGoal" + "-" + primaryGoal)
-  // console.log("typicalDay" + "-" + typicalDay)
-  // console.log("gender" + "-" + gender)
-  // console.log("goalWeight" + "-" + goalWeight)
-  // console.log("PHeight" + "-" + PHeight)
-  // console.log("currentWeight" + "-" + currentWeight)
-  // console.log("age" + "-" + age)
 
   const handleSignUpSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    let data: dataType = {
+      email,
+      password,
+      gender,
+      primaryGoal,
+      PHeight,
+      age,
+      currentWeight,
+      goalWeight,
+      typicalDay,
+      name,
+    }
+    dispatch(Register(data))
+
     const message = "Sign Up Successful!!!";
     setShowToast(true);
     setTimeout(() => {
@@ -144,6 +166,9 @@ const Quiz: React.FC = () => {
         break;
       case 'password':
         setPassword(value);
+        break;
+      case 'name':
+        setName(value);
         break;
     }
   };
