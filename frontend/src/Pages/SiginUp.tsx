@@ -3,6 +3,7 @@ import fitnessBLogo from "../Assets/fitnessBLogo.png";
 import { IconType } from "react-icons/lib/esm/iconBase";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Toast from "./Toast";
 // import { SignUpModal } from "./SignUpModal";
 
 type QuestionType = {
@@ -79,6 +80,7 @@ const Quiz: React.FC = () => {
   const [currentWeight, setCurrentWeight] = useState<any>(0)
   const [PHeight, setPHeight] = useState<any>(0)
   const [goalWeight, setGoalWeight] = useState<any>(0)
+  const [showToast, setShowToast] = useState(false);
 
   const Icon: IconType = BsArrowLeft;
   const [email, setEmail] = useState('');
@@ -101,13 +103,23 @@ const Quiz: React.FC = () => {
     }
   };
 
-  console.log("primaryGoal" + "-" + primaryGoal)
-  console.log("typicalDay" + "-" + typicalDay)
-  console.log("gender" + "-" + gender)
-  console.log("goalWeight" + "-" + goalWeight)
-  console.log("PHeight" + "-" + PHeight)
-  console.log("currentWeight" + "-" + currentWeight)
-  console.log("age" + "-" + age)
+  // console.log("primaryGoal" + "-" + primaryGoal)
+  // console.log("typicalDay" + "-" + typicalDay)
+  // console.log("gender" + "-" + gender)
+  // console.log("goalWeight" + "-" + goalWeight)
+  // console.log("PHeight" + "-" + PHeight)
+  // console.log("currentWeight" + "-" + currentWeight)
+  // console.log("age" + "-" + age)
+
+  const handleSignUpSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const message = "Sign Up Successful!!!";
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 5000);
+    return <Toast message={message} type="success" />; // pass type prop value
+  };
 
 
 
@@ -140,6 +152,7 @@ const Quiz: React.FC = () => {
 
   return (
     <div>
+      <div>{showToast && <Toast message="Sign Up Successful!!!" type="success" />} </div>
       <div className="mb-20"><div style={{ width: "100%", height: "10px", backgroundColor: "#ddd", borderRadius: "100px" }}>
         <div
           style={{
@@ -221,7 +234,7 @@ const Quiz: React.FC = () => {
         </div>
         :
         <div>
-          <form className="space-y-6 w-1/2 m-auto">
+          <form className="space-y-6 w-1/2 m-auto" onSubmit={handleSignUpSubmit}>
             <div>
               <label htmlFor="name" className="block text-gray-700 text-left font-bold">
                 Name
@@ -268,8 +281,9 @@ const Quiz: React.FC = () => {
               <button
                 type="submit"
                 className="ml-3 w-1/2 inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-[#f2305a] border border-transparent rounded-md shadow-sm hover:bg-[#ed496d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f2305a]"
+              // onClick={handleSignUpButton}
               >
-                <Link to="/signin"> Sign up </Link>
+                Sign up
               </button>
             </div>
           </form>
@@ -286,10 +300,8 @@ const SignUp = () => {
       <div className="flex m-10 justify-content-space-between">
         <img src={fitnessBLogo} className="" width={"200px"} alt="" />
       </div>
-
       <div className='text-center w-1/2 m-auto'>
-
-        <div> <Quiz /></div>
+        <div><Quiz /></div>
       </div>
     </div>
   );
