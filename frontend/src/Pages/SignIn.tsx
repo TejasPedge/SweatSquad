@@ -57,6 +57,7 @@ const SignIn = () => {
       setTimeout(() => {
         setShowToast(false);
         navigate("/")
+        window.location.reload()
       }, 1000);
     }
 

@@ -305,7 +305,7 @@ const Quiz: React.FC = () => {
                 name="name"
                 autoComplete="name"
                 onChange={handleInputChange}
-                className="mt-1 block w-full h-10 border-b-black rounded-md shadow-sm focus:ring-[#f2305a] focus:border-[#f2305a] sm:text-sm"
+                className="mt-1 block w-full h-10 py-2 px-3 border-b-black rounded-md shadow-sm focus:ring-[#f2305a] focus:border-[#f2305a] sm:text-sm"
               />
             </div>
 
