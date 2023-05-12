@@ -273,7 +273,6 @@ const Quiz: React.FC = () => {
               </button>
             </div>
           </form>
-
         </div>
       }
 
