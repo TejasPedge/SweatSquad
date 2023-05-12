@@ -1,15 +1,16 @@
 const express = require("express");
 const userRouter = express.Router();
 const jwt = require("jsonwebtoken");
-const userModel = require("../Model/user.model");
+const { userModel } = require("../Model/user.model");
 const bcrypt = require("bcrypt");
 
 userRouter.post("/register", async (req, res) => {
+  const { email, password, name, age, gender, primaryGoal, typicalDay, currentWeight, PHeight, goalWeight } = req.body;
+
   try {
-    const { email, password, name, age, gender, primaryGoal, typicalDay, currentWeight, PHeight, goalWeight } = req.body;
-    const existingUser = await userModel.findOne({ email });
+    const existingUser = await userModel.findOne({ email, name });
     if (existingUser) {
-      return res.status(400).json({ message: "Email already exists" });
+      return res.status(400).json({ message: "User already exists" });
     }
     bcrypt.hash(password, 5, async (err, hash) => {
       const user = new userModel({
@@ -26,11 +27,13 @@ userRouter.post("/register", async (req, res) => {
       });
       await user.save();
       res.status(201).json({ message: "User created successfully" });
+      if (err) { res.status(201).json({ err: err }); }
     });
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({ error: error });
   }
 });
+
 userRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -51,6 +54,7 @@ userRouter.post("/login", async (req, res) => {
               userName: user.name,
               userId: user._id,
             });
+          if (err) { res.status(201).json({ err }) }
         } else {
           res.status(401).json({ message: "Wrong Credentials" });
         }
@@ -63,13 +67,12 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-//get all the users
 userRouter.get("/", async (req, res) => {
   try {
     const users = await userModel.find();
-    res.status(200).json(users);
+    res.status(200).json();
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({ error: error });
   }
 });
 
