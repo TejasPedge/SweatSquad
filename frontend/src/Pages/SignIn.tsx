@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import HomeBanner from "../Assets/homeBanner.mp4";
 import SIgnIn from "../Assets/signin.mp4";
 import fitnessB from "../Assets/fitnessB-transformed.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { Login } from '../Redux/Login/action';
 
 type FormErrors = {
   email?: string;
   password?: string;
 };
 
+
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const dispatch = useDispatch<any>()
+  const navigate = useNavigate()
+
   const validateForm = () => {
     const errors: FormErrors = {};
 
@@ -30,14 +36,27 @@ const SignIn = () => {
 
     return errors;
   };
-
+  const token: string = useSelector((state: any) => {
+    console.log(state, "line38")
+    return state.LoginReducer.token
+  })
+  useEffect(() => {
+    if (token) {
+      navigate("/")
+    }
+  }, [token])
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const errors = validateForm();
 
     if (Object.keys(errors).length === 0) {
       // Submit form data to server
-      console.log('Form submitted successfully');
+      let data: any = {
+        email, password
+      }
+      dispatch(Login(data))
+
+
     } else {
       setFormErrors(errors);
     }
@@ -86,7 +105,7 @@ const SignIn = () => {
                       onChange={handleInputChange}
                       className="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                     />
-                     <p className='text-sm text-[#f2305a]'>{formErrors.password && <span className="error">{formErrors.password}</span>}</p> 
+                    <p className='text-sm text-[#f2305a]'>{formErrors.password && <span className="error">{formErrors.password}</span>}</p>
                   </div>
                 </div>
 
@@ -111,7 +130,7 @@ const SignIn = () => {
                       required
                       className="block w-full rounded-md border-0 py-2 px-3  text-gray-900 shadow-sm ring-1 ring-inset ring-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                     />
-                     <p className='text-sm text-[#f2305a]'>{formErrors.password && <span className="error">{formErrors.password}</span>}</p>
+                    <p className='text-sm text-[#f2305a]'>{formErrors.password && <span className="error">{formErrors.password}</span>}</p>
                   </div>
                 </div>
 

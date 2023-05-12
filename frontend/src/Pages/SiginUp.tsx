@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import fitnessBLogo from "../Assets/fitnessBLogo.png";
 import { IconType } from "react-icons/lib/esm/iconBase";
 import { BsArrowLeft } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Toast from "./Toast";
 import { Register } from "../Redux/Login/action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { SignUpModal } from "./SignUpModal";
 
 type QuestionType = {
@@ -97,7 +97,12 @@ const Quiz: React.FC = () => {
   const [goalWeight, setGoalWeight] = useState<any>(0)
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch<any>()
-  const Icon: IconType = BsArrowLeft;
+  const navigate = useNavigate()
+  const [message, setMessage] = useState<any>("")
+  const [messageType, setMessageType] = useState<any>("")
+
+  // const history = useHistory();
+  // const Icon: IconType = BsArrowLeft;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -135,14 +140,44 @@ const Quiz: React.FC = () => {
     }
     dispatch(Register(data))
 
-    const message = "Sign Up Successful!!!";
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
-    return <Toast message={message} type="success" />; // pass type prop value
   };
+  const result = useSelector((state: any) => {
+    // console.log(state, "line146")
+    return state.LoginReducer.result
+  })
+  console.log(message, "message")
+  console.log(messageType, "messagetype")
 
+  useEffect(() => {
+    if (result === "User created successfully") {
+      const SuccessMessage = "Sign Up Successful!!!";
+      setShowToast(true);
+      setMessage(SuccessMessage);
+      setMessageType("success");
+      <Toast message={message} type="success" />
+      setTimeout(() => {
+        setShowToast(false);
+
+        navigate("/signin")
+      }, 1000);
+
+
+    }
+    if (result === "User already exists") {
+      const FailureMessage = "User Already Exist! Please Login...";
+      setShowToast(true);
+      setMessage(FailureMessage)
+      setMessageType("error");
+      <Toast message={message} type="error" />
+      setTimeout(() => {
+        setShowToast(false);
+
+        navigate("/signin")
+      }, 1000);
+
+
+    }
+  }, [result])
 
 
   const handleChange = (val: number) => {
@@ -177,7 +212,7 @@ const Quiz: React.FC = () => {
 
   return (
     <div>
-      <div>{showToast && <Toast message="Sign Up Successful!!!" type="success" />} </div>
+      <div>{showToast && <Toast message={message} type={messageType} />} </div>
       <div className="mb-20"><div style={{ width: "100%", height: "10px", backgroundColor: "#ddd", borderRadius: "100px" }}>
         <div
           style={{
