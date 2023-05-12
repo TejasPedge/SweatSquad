@@ -1,0 +1,12 @@
+{
+  "name": "shankar",
+  "email": "shankar@gmail.com",
+  "password": "shankar123",
+  "age": 24,
+  "gender": "male",
+  "primaryGoal": "Lose Weight",
+  "typicalDay": "mostly at home",
+  "currentWeight": 86,
+  "PHeight": 5,
+  "goalWeight": 50
+}
