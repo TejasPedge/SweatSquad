@@ -120,7 +120,6 @@ const MainBody = () => {
                     <div className="absolute bottom-[8%] left-1/2 bg-white transform -translate-x-1/2 text-2xl rounded-[200px] ">
                         <p className="bg-transparent text-center  py-2 px-6 cursor-pointer">Learn More</p>
                     </div>
-
                 </div>
             </div>
         </div>
