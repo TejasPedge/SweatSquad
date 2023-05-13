@@ -7,19 +7,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAlarmsFromStorage } from './Redux/actions/AlarmAction';
 // import './App.css';
 import AllRoutes from './Routes/AllRoutes';
-
 function App() {
-  const activeAlarms = useSelector(state => state.alarmReducer.activeAlarm)
-  const dispatch = useDispatch()
-
+  // const activeAlarms = useSelector<any>((state) => state.alarmReducer.activeAlarm)
+  const dispatch = useDispatch<any>()
   useEffect(() => {
     const myAlarms = localStorage.getItem('myAlarms');
     if (myAlarms) {
-      dispatch(setAlarmsFromStorage(JSON.parse(myAlarms)))
+      dispatch:(setAlarmsFromStorage(JSON.parse(myAlarms)))
     }
   }, []);
+  // style={{ backgroundColor: activeAlarms ? activeAlarms.bgColor : "#000" }}
   return (
-    <div className="App" style={{ backgroundColor: activeAlarms ? activeAlarms.bgColor : "#000" }}>
+    <div className="App">
       <Clock />
       <AlarmContainer />
       <AllRoutes />
