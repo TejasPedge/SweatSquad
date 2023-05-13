@@ -104,7 +104,6 @@ const MainBody = () => {
                     <div className="absolute bottom-[8%] left-1/2 bg-white transform -translate-x-1/2 text-2xl rounded-[200px] ">
                         <p className="bg-transparent text-center  py-2 px-6 cursor-pointer">Learn More</p>
                     </div>
-
                 </div>
                 <div className="w-full relative">
                     <img src="https://images.unsplash.com/photo-1604563906225-598785ab66ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=691&q=80" className="rounded-[40px]" alt="" width={"100%"} height={"100vh"} />
