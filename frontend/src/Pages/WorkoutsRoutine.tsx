@@ -26,15 +26,15 @@ import { Link } from 'react-router-dom'
 
 const WorkoutsRoutine = () => {
   return (
-<div className='bg-blue-950 text-cyan-300'>
+<div className=' '>
     <div className='p-3 w-4/5 mx-auto'>
 
-        <h2 className='text text-2xl font font-bold'>Target Areas</h2>
+        <h2 className='text font font-bold text-6xl'>Target Areas</h2>
 
         <div className='mt-5 grid grid-cols-4 gap-4'>
-            {target_muscles.map((el) => {
+            {target_muscles.map((el,id) => {
             
-            return <div className='border rounded-md overflow-hidden border-cyan-400 w-200 hover:cursor-pointer '>
+            return <div className='border rounded-md overflow-hidden border-cyan-400 w-200 hover:cursor-pointer' key={id}>
                         <Link to = {`/workout-routine/${el.target==='cardio' ? 'cardiovascular system' : el.target}`}>
                             <div className='w-full h-4/5  overflow-hidden'>
                                 <img className='w-full h-full object-cover object-center transform hover:scale-125 transition duration-500' alt = {el.target} src = {el.img}></img>

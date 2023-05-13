@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HomePageBanner from "../Assets/homePage_Banner.mp4"
 import logo from "../Assets/fitnessBLogo.png"
+import WorkoutsRoutine from "./WorkoutsRoutine";
 type Props = {};
 
 const Video = () => {
@@ -70,7 +71,9 @@ const Navbar = () => {
 };
 const MainBody = () => {
     return (
-        <div className="mt-[15%]">
+        <div className="mt-[2%]">
+            <div><p className="pl-[5%] font-bold text-7xl">
+                Discover a personalized <br /> approach to fitness with FitnessB, <br /> tailored to your unique needs and goals.</p></div>
             <div className="grid grid-cols-3 gap-10 m-20">
                 <div className="w-full relative">
                     <img src="https://images.unsplash.com/photo-1604563906225-598785ab66ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=691&q=80" className="rounded-[40px]" alt="" width={"100%"} height={"100vh"} />
@@ -106,7 +109,7 @@ const MainBody = () => {
                     </div>
                 </div>
                 <div className="w-full relative">
-                    <img src="https://images.unsplash.com/photo-1604563906225-598785ab66ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=691&q=80" className="rounded-[40px]" alt="" width={"100%"} height={"100vh"} />
+                    <img src="https://images.pexels.com/photos/11883246/pexels-photo-11883246.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="rounded-[40px]" alt="" width={"100%"} height={"100vh"} />
                     <div className="absolute top-[8%] left-1/2 bg-transparent transform -translate-x-1/2 text-white text-3xl">
                         <p className="bg-transparent text-center border-white border rounded-2xl font-semibold py-1 px-4">Tracking</p>
                     </div>
@@ -115,7 +118,7 @@ const MainBody = () => {
                             <p className="font-bold text-5xl">fitnessB</p>
                             <p className="w-[1000px] font-bold text-5xl pt-2">Health Coaching</p>
                             <p className="w-full font-bold text-5xl pt-2">App</p>
-                        </p>    
+                        </p>
                     </div>
                     <div className="absolute bottom-[8%] left-1/2 bg-white transform -translate-x-1/2 text-2xl rounded-[200px] ">
                         <p className="bg-transparent text-center  py-2 px-6 cursor-pointer">Learn More</p>
@@ -134,7 +137,9 @@ const HomePage: React.FC<Props> = () => {
             </div>
             <div>
                 <MainBody />
-
+            </div>
+            <div>
+                <WorkoutsRoutine />
             </div>
 
         </div>
