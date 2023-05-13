@@ -7,11 +7,20 @@ import { Link } from 'react-router-dom';
 import { FcAlarmClock } from "react-icons/fc";
 import FooterPage from './FooterPage';
 const Navbar = () => {
+    let token = localStorage.getItem("token") || "";
+    const [userName, setUserName] = useState<any>("Try fitnessB for free")
+    useEffect(() => {
+        let user = localStorage.getItem("UserName") || "Default User";
+        if (user !== "Default User") {
+            let user_name = `Hello - ${user}`
+            setUserName(user_name)
+        }
+    }, [token])
     return (
         <div className={`fixed w-full top-0 h-30 z-50 bg-[#191923]`}>
             <nav className="flex items-center justify-between p-4 ">
                 <div className="text-white">
-                    <img src={logo} alt="logo" width={"200px"} height="10px" style={{ filter: 'brightness(0%) invert(100%)' }} />
+                    <Link to="/"> <img src={logo} alt="logo" width={"200px"} height="10px" style={{ filter: 'brightness(0%) invert(100%)' }} /></Link>
                 </div>
                 <ul className="flex items-center">
                     <li className="mx-4">
@@ -25,8 +34,8 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className="mx-4">
-                        <Link to="/sigin" className="text-white" >
-                            <button className="bg-[#f2305a] py-2 px-3 rounded-lg font-bold">Try fitnessB for free</button>
+                        <Link to={token !== "" ? "/signin" : ""} className="text-white" >
+                            <button className="bg-[#f2305a] py-2 px-3 rounded-lg font-bold"> {userName.replace(/["']/g, '')}</button>
                         </Link>
                     </li>
                 </ul>
@@ -239,7 +248,7 @@ const SinglePageStartExercise = () => {
                             </div>
                         </div>
                     </div>
-                </div>} 
+                </div>}
 
 
             </div>

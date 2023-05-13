@@ -37,8 +37,17 @@ const Video = () => {
 //     backgColor: string;  React.FC<NavbarProps> = (backgColor) bg-[${backgColor}]
 // }
 const Navbar = () => {
+    let token = localStorage.getItem("token") || "";
+    const [userName, setUserName] = useState<any>("Try fitnessB for free")
     const [bgColor, setBgColor] = useState("transparent");
 
+    useEffect(() => {
+        let user = localStorage.getItem("UserName") || "Default User";
+        if (user !== "Default User") {
+            let user_name = `Hello - ${user}`
+            setUserName(user_name)
+        }
+    }, [token])
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
@@ -57,13 +66,15 @@ const Navbar = () => {
         <div className={`fixed w-full z-[1000] bg-[${bgColor}] transition-colors duration-800`} >
             <nav className="flex items-center justify-between p-4 ">
                 <div className="text-white">
-                    <img
-                        src={logo}
-                        alt="logo"
-                        width={"200px"}
-                        height="10px"
-                        style={{ filter: "brightness(0%) invert(100%)" }}
-                    />
+                    <Link to="/">
+                        <img
+                            src={logo}
+                            alt="logo"
+                            width={"200px"}
+                            height="10px"
+                            style={{ filter: "brightness(0%) invert(100%)" }}
+                        />
+                    </Link>
                 </div>
                 <ul className="flex items-center">
                     <li className="mx-4">
@@ -82,9 +93,9 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className="mx-4">
-                        <Link to="/signin" className="text-white">
+                        <Link to={token !== "" ? "/signin" : ""} className="text-white">
                             <button className="bg-[#f2305a] py-2 px-3 rounded-lg font-bold">
-                                Try fitnessB for free
+                                {userName.replace(/["']/g, '')}
                             </button>
                         </Link>
                     </li>
@@ -102,7 +113,7 @@ const MainBody = () => {
             <div className="grid grid-cols-3 gap-10 m-20">
                 <div className="w-full relative">
                     <img src="https://images.unsplash.com/photo-1604563906225-598785ab66ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=691&q=80" className="rounded-[40px]" alt="" width={"100%"} height={"100vh"} />
-                    <div className="`absolute top-[8%] left-1/2 bg-transparent transform -translate-x-1/2 text-white text-3xl`">
+                    <div className="absolute top-[8%] left-1/2 bg-transparent transform -translate-x-1/2 text-white text-3xl">
                         <p className="bg-transparent text-center border-white border rounded-2xl font-semibold py-1 px-4">Tracking</p>
                     </div>
                     <div className="absolute top-[50%] left-[50%] bg-transparent transform -translate-x-1/2 text-[#F8F8F8] text-3xl">
@@ -115,7 +126,6 @@ const MainBody = () => {
                     <div className="absolute bottom-[8%] left-1/2 bg-white transform -translate-x-1/2 text-2xl rounded-[200px] ">
                         <p className="bg-transparent text-center  py-2 px-6 cursor-pointer">Learn More</p>
                     </div>
-
                 </div>
                 <div className="w-full relative">
                     <img src="https://images.unsplash.com/photo-1584466977773-e625c37cdd50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" className="rounded-[40px]" alt="" width={"100%"} height={"100vh"} />

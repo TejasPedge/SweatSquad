@@ -48,6 +48,7 @@ export const Login = (data: RegisterData) => (dispatch: Dispatch<RegisterAction>
             console.log(res)
             console.log(res.data.token);
             localStorage.setItem("LoginToken", JSON.stringify(res.data.token))
+            localStorage.setItem("UserName", JSON.stringify(res.data.userName))
             dispatch({ type: POST_SIGN_IN_SUCCESS, payload2: res.data.token });
         })
         .catch((err) => {
