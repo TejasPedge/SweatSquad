@@ -142,11 +142,9 @@ const Quiz: React.FC = () => {
 
   };
   const result = useSelector((state: any) => {
-    // console.log(state, "line146")
     return state.LoginReducer.result
   })
-  // console.log(message, "message")
-  // console.log(messageType, "messagetype")
+ 
 
   useEffect(() => {
     if (result === "User created successfully") {
