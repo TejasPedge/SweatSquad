@@ -95,7 +95,7 @@ const MainBody = () => {
                 <div className="w-full relative">
                     <img src="https://images.unsplash.com/photo-1584466977773-e625c37cdd50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" className="rounded-[40px]" alt="" width={"100%"} height={"100vh"} />
                     <div className="absolute top-[8%] left-1/2 bg-transparent transform -translate-x-1/2 text-white text-3xl">
-                        <p className="bg-transparent text-center border-white border rounded-2xl font-semibold py-1 px-4">Tracking</p>
+                        <p className="bg-transparent text-center border-white border rounded-2xl font-semibold py-1 px-4">Guidance</p>
                     </div>
                     <div className="absolute top-[50%] left-[50%] bg-transparent transform -translate-x-1/2 text-[#F8F8F8] text-3xl">
                         <p className="bg-transparent text-center rounded-2xl ">
@@ -111,7 +111,7 @@ const MainBody = () => {
                 <div className="w-full relative">
                     <img src="https://images.pexels.com/photos/11883246/pexels-photo-11883246.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="rounded-[40px]" alt="" width={"100%"} height={"100vh"} />
                     <div className="absolute top-[8%] left-1/2 bg-transparent transform -translate-x-1/2 text-white text-3xl">
-                        <p className="bg-transparent text-center border-white border rounded-2xl font-semibold py-1 px-4">Tracking</p>
+                        <p className="bg-transparent text-center border-white border rounded-2xl font-semibold py-1 px-4">Personalization</p>
                     </div>
                     <div className="absolute top-[50%] left-[50%] bg-transparent transform -translate-x-1/2 text-[#F8F8F8] text-3xl">
                         <p className="bg-transparent text-center rounded-2xl ">
