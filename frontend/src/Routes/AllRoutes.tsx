@@ -6,6 +6,7 @@ import HomePage from '../Pages/HomePage'
 import WorkoutsRoutine from '../Pages/WorkoutsRoutine'
 import SinglePageTargetWorkouts from '../Pages/SinglePageTargetWorkouts'
 import SinglePageStartExercise from '../Pages/SinglePageStartExercise'
+import Piechart from '../CHarts/Piechart'
 
 const AllRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AllRoutes = () => {
         <Route path='/workout-routine' element={<WorkoutsRoutine />}></Route>
         <Route path='/workout-routine/:target' element={<SinglePageTargetWorkouts />}></Route>
         <Route path='/workout-routine/:target/:id' element={<SinglePageStartExercise />}></Route>
+        <Route path="/analysis" element={<Piechart/>}></Route>
       </Routes>
     </div>
   )
