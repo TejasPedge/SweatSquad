@@ -9,7 +9,7 @@ interface Target {
 
 export const target_muscles: Array<Target> = [
 
-    { target: 'abductors', img: 'https://images.pexels.com/photos/327253/pexels-photo-327253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' },
+    { target: 'abductors', img: 'https://images.unsplash.com/photo-1634225251578-d5f6ffced78a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' },
 
     { target: 'abs', img: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' },
 
