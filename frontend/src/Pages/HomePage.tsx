@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import HomePageBanner from "../Assets/homePage_Banner.mp4"
 
 type Props = {};
+
 const Video = () => {
     const [width, setWidth] = useState("full");
 
@@ -11,9 +12,10 @@ const Video = () => {
             setWidth("1/2");
         }, 2000);
     }, []);
+
     return (
         <div
-            className={`w-${width} h-full bg-fit  bg-no-repeat`}
+            className={`w-${width} h-full bg-cover bg-center bg-no-repeat`}
             style={{
                 transition: "all 2s ease-in-out",
             }}
@@ -25,13 +27,12 @@ const Video = () => {
                 muted
                 src={HomePageBanner}
                 // className="h-full"
-                style={{ height: "100vh" }}
+                style={{ minHeight: "100vh" }}
             >
             </video>
         </div>
     );
 };
-
 
 const Navbar = () => {
     const [show, setShow] = useState(false);
