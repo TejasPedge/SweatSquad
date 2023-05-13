@@ -34,7 +34,7 @@ const WorkoutsRoutine = () => {
         <div className='mt-5 grid grid-cols-4 gap-4'>
             {target_muscles.map((el) => {
             
-            return <div className='border rounded-md overflow-hidden border-cyan-400 w-200 hover:cursor-pointer '>
+            return <div key = {el.img} className='border rounded-md overflow-hidden border-cyan-400 w-200 hover:cursor-pointer '>
                         <Link to = {`/workout-routine/${el.target==='cardio' ? 'cardiovascular system' : el.target}`}>
                             <div className='w-full h-4/5  overflow-hidden'>
                                 <img className='w-full h-full object-cover object-center transform hover:scale-125 transition duration-500' alt = {el.target} src = {el.img}></img>

@@ -15,23 +15,33 @@ export interface RequestedData {
     "equipment": string,
     "gifUrl"   : string,
     "id"       : string,
-    "name"    : string,
+    "name"     : string,
     "target"   : string 
 } 
 
+const initial:RequestedData = {
+    "_id" : '',
+    "bodyPart" :'',
+    "equipment":'',
+    "gifUrl"   :'',
+    "id"       :'',
+    "name"     :'',
+    "target"   :'' 
+}
 
-const useApi = (url : string,query? : Queryopt) => {
 
-    const [data, setData] = useState<RequestedData[] | RequestedData >([]);
+const useTrack = (url : string,query? : Queryopt) => {
+
+    const [data, setData] = useState<RequestedData>(initial);
     const [isLoading, setLoading] = useState(false);
     const [isErr, setisErr] = useState(false);
-
+ 
     const fetchData = async (url : string) => {
 
         try{
             setLoading(true);
 
-            const data = await axios.get<RequestedData[]>(url,{params : query || {}});
+            const data = await axios.get<RequestedData>(url,{params : query || {}});
 
             setLoading(false);
 
@@ -52,8 +62,8 @@ const useApi = (url : string,query? : Queryopt) => {
     },[url]);
 
 
-return [data,isLoading,isErr]
+return [data,isLoading,isErr] 
 
 }
 
-export default useApi
+export default useTrack
