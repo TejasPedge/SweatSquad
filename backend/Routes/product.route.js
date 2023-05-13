@@ -12,19 +12,35 @@ ProductRoute.get("/", async (req, res) => {
     }
   });
   
-  ProductRoute.get("/:equipment",auth, async (req, res) => {
+  ProductRoute.get("/:equipment", async (req, res) => {
     let filters = { equipment: req.params.equipment };
     console.log(req.query)
     if (req.query.name) {
       filters.name = { $regex: req.query.name, $options: "i" };
     }
     try {
-      let filteredProduct = await ProductModel.find(filters).limit(20);
+      let filteredProduct = await ProductModel.find(filters)
       res.status(200).send({ products: filteredProduct });
   
     } catch (err) {
       res.status(400).send({ err: err.message });
     }
   });
+    
+  ProductRoute.get("/:target", async (req, res) => {
+    let filters = { target: req.params.target };
+    console.log(req.query)
+    if (req.query.name) {
+      filters.name = { $regex: req.query.name, $options: "i" };
+    }
+    try {
+      let filteredProduct = await ProductModel.find(filters)
+      res.status(200).send({ products: filteredProduct });
+  
+    } catch (err) {
+      res.status(400).send({ err: err.message });
+    }
+  });
+   
    
   module.exports = { ProductRoute };
