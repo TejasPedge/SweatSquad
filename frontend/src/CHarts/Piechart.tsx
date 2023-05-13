@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-import { useStore } from "react-redux";
 import Charts from "./Charts";
 
 
@@ -9,31 +8,31 @@ interface MyObject {
 }
 
 
-const data = {
-  labels: ["Red", "Blue", "Yellow"],
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [50, 25, 25],
-      backgroundColor: [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 205, 86)",
-      ],
-      hoverOffset: 4,
-    },
-  ],
-  animation: {
-    animateScale: true,
-    animateRotate: true,
-    duration: 2000,
-    easing: "easeOutQuart",
-  },
-};
-const config = {
-  type: "doughnut",
-  data: data,
-};
+// const data = {
+//   labels: ["Red", "Blue", "Yellow"],
+//   datasets: [
+//     {
+//       label: "My First Dataset",
+//       data: [50, 25, 25],
+//       backgroundColor: [
+//         "rgb(255, 99, 132)",
+//         "rgb(54, 162, 235)",
+//         "rgb(255, 205, 86)",
+//       ],
+//       hoverOffset: 4,
+//     },
+//   ],
+//   animation: {
+//     animateScale: true,
+//     animateRotate: true,
+//     duration: 2000,
+//     easing: "easeOutQuart",
+//   },
+// };
+// const config = {
+//   type: "doughnut",
+//   data: data,
+// };
 interface Props {}
 
 const Piechart: React.FC<Props> = () => {
@@ -89,7 +88,7 @@ const Piechart: React.FC<Props> = () => {
               type="text"
               autoComplete="email"
               onChange={handleInputChange}
-              className="mt-1 block w-full h-10 py-2 px-3 border-black-300 rounded-md shadow-sm focus:ring-[#f2305a] focus:border-[#f2305a] sm:text-sm"
+              className="mt-1 block w-full h-10 py-2 px-3 border-[#f2305a]  rounded-md shadow-sm focus:ring-[#f2305a] focus:border-[#f2305a] sm:text-sm"
             />
           </div>
 
@@ -132,7 +131,10 @@ const Piechart: React.FC<Props> = () => {
         {bmi ? (
           <Charts />
         ) : (
-          <img src="https://media.tenor.com/FAiCGANT8ikAAAAC/thinking.gif" />
+          <img
+            className="bg-transparent object-none"
+            src="https://media.tenor.com/FAiCGANT8ikAAAAC/thinking.gif"
+          />
         )}
       </div>
     </div>

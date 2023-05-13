@@ -20,6 +20,12 @@ const data = {
       hoverOffset: 4,
     },
   ],
+  animation: {
+    animateScale: true,
+    animateRotate: true,
+    duration: 2000,
+    easing: "easeOutQuart",
+  },
 };
 const config = {
   type: "doughnut",
