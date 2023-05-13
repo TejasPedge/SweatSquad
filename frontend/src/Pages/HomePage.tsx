@@ -93,7 +93,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className="mx-4">
-                        <Link to="/signin" className="text-white">
+                        <Link to={token !== "" ? "/signin" : ""} className="text-white">
                             <button className="bg-[#f2305a] py-2 px-3 rounded-lg font-bold">
                                 {userName.replace(/["']/g, '')}
                             </button>
