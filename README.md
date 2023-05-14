@@ -6,7 +6,7 @@ A platform that provides information, resources, and tools to help people achiev
   
 ## Screenshots   
 Landing Page   
- 
+  
 ![landing page](https://github.com/TejasPedge/SweatSquad/assets/110609653/f6af6c41-12f2-4186-a9c5-d753330d728c)
 
 For SignIn you can click on Try Fitness for Free and then you can see the below SignIn page
