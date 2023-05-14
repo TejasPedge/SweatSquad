@@ -26,7 +26,7 @@ import { Link } from 'react-router-dom'
 
 const WorkoutsRoutine = () => {
     return (
-        <div className='mb-[8%] '>
+        <div className='mb-[8%] ' >
             <div className='p-3 w-4/5 mx-auto'>
 
                 <h2 className='text font font-bold text-6xl'>Target Areas</h2>
@@ -42,7 +42,7 @@ const WorkoutsRoutine = () => {
                             <div className="absolute bottom-[8%] left-1/2 bg-white transform -translate-x-1/2 text-2xl rounded-[200px] ">
                                 <p className="bg-transparent text-center w-full py-1 px-8 cursor-pointer">{el.target}</p>
                             </div>
-                            
+
                         </div>
                     })}
 
