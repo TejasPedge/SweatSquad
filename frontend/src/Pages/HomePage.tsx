@@ -34,7 +34,7 @@ const Video = () => {
             </video>
             <div className="absolute top-[40%] left-[5%] z-50">
                 <div><p className="text-6xl font-bold text-[#f2305a] italic font-mono">No pain, no gain.</p></div><p className="text-5xl w-[50%] text-white mt-10" >You don't have to be great to start, but you have to start to be great.</p>
-                <div className="mt-10">  <Link to="/sigin" className="text-white" >
+                <div className="mt-10">  <Link to="/signin" className="text-white" >
                     <button className="bg-[#f2305a] py-4 px-8 rounded-lg font-bold">Try fitnessB for free</button>
                 </Link></div>
             </div>
@@ -92,21 +92,23 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <ul className="flex items-center">
+                <li className="mx-4">
+                        <a href="#products" className="text-white">Products</a>
+                    </li>
+
                     <li className="mx-4">
 
                         <a href="#workouts" className="text-white">  Workouts</a>
 
                     </li>
-                    <li className="mx-4">
-                        <a href="#products" className="text-white">Products</a>
-                    </li>
+                   
                     <li className="mx-4">
 
                         <a href="#successfull" className="text-white" > Success</a>
 
                     </li>
                     <li className="mx-4">
-                        <Link to={token !== "" ? "/signin" : ""} className="text-white">
+                        <Link to={token === "" ? "/signin" : ""} className="text-white">
                             <button className="bg-[#f2305a] py-2 px-3 rounded-lg font-bold">
                                 {userName.replace(/["']/g, '')}
                             </button>

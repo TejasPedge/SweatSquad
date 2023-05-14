@@ -26,19 +26,19 @@ const Navbar = () => {
                 </div>
                 <ul className="flex items-center">
                     <li className="mx-4">
-                        <Link to="#" className="text-white">
+                        <a href="/" className="text-white">
                             Workouts
-                        </Link>
+                        </a>
                     </li>
                     <li className="mx-4">
-                        <Link to="#" className="text-white">
+                        <a href="/" className="text-white">
                             Products
-                        </Link>
+                        </a>
                     </li>
                     <li className="mx-4">
-                        <Link to={token !== "" ? "/signin" : ""} className="text-white" >
+                        <a href={token !== "" ? "/signin" : ""} className="text-white" >
                             <button className="bg-[#f2305a] py-2 px-3 rounded-lg font-bold"> {userName.replace(/["']/g, '')}</button>
-                        </Link>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -85,7 +85,7 @@ const SinglePageTargetWorkouts = () => {
                                         <div>  <p className='text-center text-xl font-bold pb-2'>{el.name}</p></div>
 
                                         <div className="top-[100%] absolute bottom-0">  <Link to="" className="text-white" >
-                                            <button className="bg-[#f2305a] py-2 w-[200px] px-6 rounded-lg font-bold">Eqipment :{el.equipment}</button>
+                                            <button className="bg-[#f2305a] py-2 w-[200px] px-6 rounded-lg font-bold">a{el.equipment}</button>
                                         </Link></div>
                                         {/* <div> <p className='text-center rounded-md  inline-block mx-auto px-2 bg-blue-700'>Eqipment : </p></div> */}
                                     </div>

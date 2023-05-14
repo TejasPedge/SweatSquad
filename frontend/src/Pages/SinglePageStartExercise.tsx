@@ -6,7 +6,9 @@ import logo from "../Assets/fitnessBLogo.png"
 import { Link } from 'react-router-dom';
 import { FcAlarmClock } from "react-icons/fc";
 import FooterPage from './FooterPage';
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
+    
     let token = localStorage.getItem("token") || "";
     const [userName, setUserName] = useState<any>("Try fitnessB for free")
     useEffect(() => {
@@ -24,19 +26,19 @@ const Navbar = () => {
                 </div>
                 <ul className="flex items-center">
                     <li className="mx-4">
-                        <Link to="#" className="text-white">
+                        <a href="/" className="text-white">
                             Workouts
-                        </Link>
+                        </a>
                     </li>
                     <li className="mx-4">
-                        <Link to="#" className="text-white">
+                        <a href="/" className="text-white">
                             Products
-                        </Link>
+                        </a>
                     </li>
                     <li className="mx-4">
-                        <Link to={token !== "" ? "/signin" : ""} className="text-white" >
+                        <a href={token !== "" ? "/signin" : ""} className="text-white" >
                             <button className="bg-[#f2305a] py-2 px-3 rounded-lg font-bold"> {userName.replace(/["']/g, '')}</button>
-                        </Link>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -56,6 +58,8 @@ const SinglePageStartExercise = () => {
 
     const [seconds, setSeconds] = useState(0);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         const interval = setInterval(() => {
             if (seconds >= 300) {
@@ -72,6 +76,7 @@ const SinglePageStartExercise = () => {
     const displaySeconds = seconds % 60;
     let calories = 0;
     console.log(calories);
+
     if (minutes === 1) {
         calories = 8
     } else if (minutes === 2) {
@@ -82,6 +87,7 @@ const SinglePageStartExercise = () => {
         calories = 63
     } else if (minutes === 5) {
         calories = 91
+        navigate('/');
     }
 
 
@@ -152,7 +158,7 @@ const SinglePageStartExercise = () => {
                             </div>
                         </div>
 
-                        <div className={`flex px-6 py-2 rounded-xl bg-slate-100 justify-between mb-3 ${minutes >= 2 ? 'bg-green-400' : 'bg-slate-100'}`}>
+                        <div className={`flex px-6 py-2 rounded-xl bg-slate-100 justify-between mb-3 ${minutes >= 2 ? 'bg-[#f2305a]' : 'bg-slate-100'}`}>
                             <div className='flex'>
                                 <p>2</p>
                             </div>
@@ -173,7 +179,7 @@ const SinglePageStartExercise = () => {
                             </div>
                         </div>
 
-                        <div className={`flex px-6 py-2 rounded-xl bg-slate-100 justify-between mb-3 ${minutes >= 3 ? 'bg-green-400' : 'bg-slate-100'}`}>
+                        <div className={`flex px-6 py-2 rounded-xl bg-slate-100 justify-between mb-3 ${minutes >= 3 ? 'bg-[#f2305a]' : 'bg-slate-100'}`}>
                             <div className='flex'>
                                 <p>3</p>
                             </div>
@@ -194,7 +200,7 @@ const SinglePageStartExercise = () => {
                             </div>
                         </div>
 
-                        <div className={`flex px-6 py-2 rounded-xl bg-slate-100 justify-between mb-3 ${minutes >= 4 ? 'bg-green-400' : 'bg-slate-100'}`}>
+                        <div className={`flex px-6 py-2 rounded-xl bg-slate-100 justify-between mb-3 ${minutes >= 4 ? 'bg-[#f2305a]' : 'bg-slate-100'}`}>
                             <div className='flex'>
                                 <p>4</p>
                             </div>
