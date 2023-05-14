@@ -52,7 +52,7 @@ After clicking on the start button you can track your repititions and calories
 Clone the project
 
 ```bash
-  git clone [https://link-to-project](https://github.com/TejasPedge/SweatSquad.git)
+  git clone https://github.com/TejasPedge/SweatSquad.git
 ```
 
 Go to the project directory
