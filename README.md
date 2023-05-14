@@ -2,7 +2,7 @@
 # 🤸🏻‍♀️ fitnessB 🤸🏻 
 
 A platform that provides information, resources, and tools to help people achieve their fitness goals. The website offers a variety of services, such as gym membership registration, personal training, group fitness classes, and nutrition advice.     
-      
+       
        
 ## Screenshots      
 Landing Page     
