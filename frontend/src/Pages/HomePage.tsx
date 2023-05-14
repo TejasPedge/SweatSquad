@@ -5,10 +5,18 @@ import logo from "../Assets/fitnessBLogo.png"
 import WorkoutsRoutine from "./WorkoutsRoutine";
 import FooterPage from "./FooterPage";
 import Testimonials from "./Testimonials";
+const token = localStorage.getItem("token") || "";
 
 type Props = {};
 
 const Video = () => {
+    const [showLogout, setShowLogout] = useState<boolean>(false)
+    useEffect(() => {
+        if (token !== "") {
+            setShowLogout(true)
+        }
+        console.log(showLogout)
+    }, [token])
     return (
         <div
             className="w-full h-full bg-cover bg-center bg-no-repeat"
@@ -30,6 +38,13 @@ const Video = () => {
                     <button className="bg-[#f2305a] py-4 px-8 rounded-lg font-bold">Try fitnessB for free</button>
                 </Link></div>
             </div>
+            <div>
+                {showLogout === true ? <div className="absolute bottom-[20%] right-[3%] z-[1000]">
+                    <button className="bg-[#f2305a] py-2 px-3 text-white rounded-lg w-[100px] font-bold">
+                        Logout
+                    </button>
+                </div> : null}
+            </div>
         </div>
     );
 };
@@ -37,7 +52,7 @@ const Video = () => {
 //     backgColor: string;  React.FC<NavbarProps> = (backgColor) bg-[${backgColor}]
 // }
 const Navbar = () => {
-    let token = localStorage.getItem("token") || "";
+
     const [userName, setUserName] = useState<any>("Try fitnessB for free")
     const [bgColor, setBgColor] = useState("transparent");
 
@@ -51,7 +66,7 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
-            if (scrollPosition > 700) {
+            if (scrollPosition > 200) {
                 setBgColor("#191923");
             } else {
                 setBgColor("transparent");
@@ -78,19 +93,17 @@ const Navbar = () => {
                 </div>
                 <ul className="flex items-center">
                     <li className="mx-4">
-                        <Link to="#" className="text-white">
-                            Workouts
-                        </Link>
+
+                        <a href="#workouts" className="text-white">  Workouts</a>
+
                     </li>
                     <li className="mx-4">
-                        <Link to="#" className="text-white">
-                            Products
-                        </Link>
+                        <a href="#products" className="text-white">Products</a>
                     </li>
                     <li className="mx-4">
-                        <Link to="#" className="text-white">
-                            Success
-                        </Link>
+
+                        <a href="#successfull" className="text-white" > Success</a>
+
                     </li>
                     <li className="mx-4">
                         <Link to={token !== "" ? "/signin" : ""} className="text-white">
@@ -175,13 +188,13 @@ const HomePage: React.FC<Props> = () => {
             <div>
                 <Video />
             </div>
-            <div >
+            <div id="products">
                 <MainBody />
             </div>
-            <div >
+            <div id="workouts">
                 <WorkoutsRoutine />
             </div>
-            <div>
+            <div id="successfull">
                 <Testimonials />
             </div>
             <div>
